@@ -1938,7 +1938,7 @@ m1, m2, m3, m4 = st.columns(4)
 for col, val, label in zip(
     [m1, m2, m3, m4],
     [ "IPL 2026","980", "2008–26", "XGBoost"],
-    [ "Live Match Prediction","Matches Trained", "Data Range", "Algorithm"]
+    [ "Live Ipl Winner Prediction","Matches Trained", "Data Range", "Algorithm"]
 ):
     with col:
         st.markdown(f"""
