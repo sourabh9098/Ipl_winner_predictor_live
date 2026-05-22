@@ -23,7 +23,7 @@ https://github.com/user-attachments/assets/YOUR_VIDEO_ID_HERE
 
 | Today's Match | Champion Prediction | Manual Prediction |
 |---|---|---|
-| ![Today](screenshots/today.png) | ![Champion](screenshots/champion.png) | ![Manual](screenshots/manual.png) |
+| ![Today](screenshot/today.png) | ![Champion](screenshot/champion.png) | ![Manual](screenshot/manual.png) |
 
 ---
 
