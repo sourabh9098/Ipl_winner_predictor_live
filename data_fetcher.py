@@ -1,16 +1,14 @@
-# import requests
-
-# API_KEY = "4e20b9615dmsh2e9518b5403db77p1d2e25jsn35440faa8f4d"
-# HOST    = "cricbuzz-cricket.p.rapidapi.com"
-
 import requests
 import json
 import os
 from datetime import datetime, timedelta
+import os
+from dotenv import load_dotenv
 
-# ── Replace with your NEW RapidAPI key ────────────────
-API_KEY = "4e20b9615dmsh2e9518b5403db77p1d2e25jsn35440faa8f4d"
-HOST    = "cricbuzz-cricket.p.rapidapi.com"
+load_dotenv()
+
+API_KEY  = os.getenv("RAPIDAPI_KEY")
+HOST = os.getenv("RAPIDAPI_HOST")
 
 HEADERS = {
     "x-rapidapi-key" : API_KEY,
@@ -62,7 +60,7 @@ API_VENUE_MAP = {
 
 
 
-# ── Helper Functions ──────────────────────────────────
+# Helper Functions 
 
 def extract_toss(toss_status):
     """Extract toss winner and decision from toss string"""
@@ -80,7 +78,6 @@ def extract_toss(toss_status):
 
 
 def get_toss_data(match_id):
-    """Fetch toss info for a specific match — 1 API call"""
     try:
         url      = f"https://{HOST}/mcenter/v1/{match_id}"
         response = requests.get(url, headers=HEADERS, timeout=10)
@@ -93,27 +90,18 @@ def get_toss_data(match_id):
 
 
 def is_cache_fresh(max_age_hours=6):
-    """
-    Check if cache file exists and is fresh
-    Returns True if cache is usable
-    Returns False if cache is old or missing
-    """
-    # Cache file doesn't exist
     if not os.path.exists(CACHE_FILE):
         return False
 
-    # Check age of cache file
     modified_time = datetime.fromtimestamp(
         os.path.getmtime(CACHE_FILE)
     )
     age = datetime.now() - modified_time
 
-    # Fresh if less than max_age_hours
     return age < timedelta(hours=max_age_hours)
 
 
 def save_cache(match_data):
-    """Save match data to cache file"""
     try:
         with open(CACHE_FILE, 'w') as f:
             json.dump(match_data, f)
@@ -123,7 +111,7 @@ def save_cache(match_data):
 
 
 def load_cache():
-    """Load match data from cache file"""
+    #Load match data from cache file
     try:
         with open(CACHE_FILE, 'r') as f:
             return json.load(f)
@@ -182,11 +170,6 @@ def get_all_ipl_matches():
 
 
 def get_todays_match_from_api():
-    """
-    Find today's match from API
-    Priority: Live > Preview > Upcoming > Recent
-    Uses 1-2 API calls total
-    """
     matches = get_all_ipl_matches()
 
     if not matches:
@@ -234,40 +217,37 @@ def get_todays_match_from_api():
 
 
 def get_todays_match():
-    """
-    Smart caching based on match situation:
-    Live match   → refresh every 30 minutes
-    Match day    → refresh every 1 hour  
-    No match day → refresh every 12 hours
-    """
-    # Load old cache first
+    
+    # Smart caching based on match situation:
+    # Live match   → refresh every 30 minutes
+    # Match day    → refresh every 1 hour  
+    # No match day → refresh every 12 hours
+    
     old_cache = load_cache()
 
-    # Decide cache duration based on match state
     if old_cache:
         state = old_cache.get('state', '')
         match_type = old_cache.get('match_type', '')
 
         if state == 'In Progress':
-            # Live match → refresh every 30 min
+            # live match refresh every 30 min
             max_age = 0.5
         elif match_type in ['PREVIEW', 'UPCOMING']:
-            # Match today → refresh every 1 hour
+            # match today ->refresh every 1 hour
             max_age = 1
         else:
-            # No match → refresh every 12 hours
+            # No match refresh every 12 hour
             max_age = 12
     else:
-        # No cache at all → fetch immediately
+        # no cache at all fetch immediately
         max_age = 0
 
-    # Check if cache is still fresh
+    #check if cache is still fresh
     if is_cache_fresh(max_age_hours=max_age):
         print(f"Using cache (max age: {max_age}h)")
         return old_cache
 
-    # Cache old → fetch fresh
-    print("Fetching fresh data from API...")
+    print("fetching fresh data from API")
     match = get_todays_match_from_api()
 
     if match:
@@ -281,7 +261,4 @@ def get_todays_match():
         return old_cache
 
     return None
-
-
-
 
