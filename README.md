@@ -16,7 +16,7 @@
 
 ## 📹 Demo Video
 
-https://github.com/user-attachments/assets/YOUR_VIDEO_ID_HERE
+screenshot/Demo.mov
 ---
 
 ## 📸 Screenshots
