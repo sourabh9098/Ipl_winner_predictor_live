@@ -1,3 +1,5 @@
+st.cache_data.clear()
+
 import streamlit as st
 import joblib
 import plotly.express as px
