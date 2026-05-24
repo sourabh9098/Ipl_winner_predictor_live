@@ -16,7 +16,7 @@
 
 ## 📹 Demo Video
 
-[![IPL Predictor Demo](https://raw.githubusercontent.com/sourabh9098/Ipl_winner_predictor_live/main/screenshot/Demo.gif)
+![IPL Predictor Demo](https://raw.githubusercontent.com/sourabh9098/Ipl_winner_predictor_live/main/screenshot/Demo.gif)
 
 ---
 
@@ -151,7 +151,6 @@ Overfitting Gap: 9.31% ✅ (Acceptable)
 | Language | Python 3.12 |
 | ML Model | XGBoost, Scikit-learn |
 | Dashboard | Streamlit |
-| Charts | Plotly |
 | Data Processing | Pandas, NumPy |
 | Live Data | CricBuzz API (RapidAPI) |
 | Model Saving | Joblib |
@@ -176,38 +175,7 @@ ipl-win-predictor/
 
 ---
 
-## ⚙️ Run Locally
-
-```bash
-# Clone the repository
-git clone https://github.com/sourabh9098/ipl-win-predictor.git
-cd ipl-win-predictor
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the app
-streamlit run app.py
-```
-
-The app will open at `http://localhost:8501`
-
 > **Note:** You need a RapidAPI key for CricBuzz API. Get a free one at [rapidapi.com](https://rapidapi.com) and add it to `data_fetcher.py`.
-
----
-
-## 📦 Requirements
-
-```
-streamlit
-joblib
-xgboost
-scikit-learn
-pandas
-numpy
-plotly
-requests
-```
 
 ---
 
