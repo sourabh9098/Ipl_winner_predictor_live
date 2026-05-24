@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 API_KEY  = os.getenv("RAPIDAPI_KEY")
 HOST = os.getenv("RAPIDAPI_HOST")
 
