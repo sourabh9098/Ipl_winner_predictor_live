@@ -16,7 +16,7 @@
 
 ## 📹 Demo Video
 
-![IPL Predictor Demo](https://raw.githubusercontent.com/sourabhvishswakramas/Ipl_winner_predictor_live/main/screenshot/Demo.gif)
+[![IPL Predictor Demo](https://raw.githubusercontent.com/sourabh9098/Ipl_winner_predictor_live/main/screenshot/Demo.gif)
 
 ---
 
