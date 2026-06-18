@@ -198,10 +198,10 @@ LinkedIn: [linkedin.com/in/sourabh9098](https://www.linkedin.com/in/sourabh9098)
 
 ---
 
-## Disclaimer ⚠️
+## Disclaimer
 
 Predictions are based on historical match patterns and ML model outputs. They are for entertainment and educational purposes only — not betting advice. Model accuracy is 58% on test data.
 
 ---
-If you found this project useful, please star the repository ⭐⭐
+If you found this project useful, please star the repository 
 Built with during IPL 2026 season
